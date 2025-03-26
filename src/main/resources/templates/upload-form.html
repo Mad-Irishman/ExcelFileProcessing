@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Excel</title>
+</head>
+<body>
+
+<h2>Загрузить Excel файл</h2>
+<form th:action="@{/excel/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required />
+    <button type="submit">Загрузить</button>
+</form>
+<p th:text="${error}"></p>
+
+<h2>Проверка статуса задачи</h2>
+<form th:action="@{/excel/status}" method="get">
+    <label for="taskId">Введите ID задачи:</label>
+    <input type="text" id="taskId" name="taskId" required/>
+    <button type="submit">Проверить статус</button>
+</form>
+
+</body>
+</html>

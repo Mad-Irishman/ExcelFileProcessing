@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "apps": [
+    {
+      "version": "1.0",
+      "comments": "dev",
+      "name": "excel-service",
+      "server_type": "dev",
+      "download_path_upload": "uploads\\",
+      "download_path_processing": "processing\\",
+      "executor_pool_size": 10
+    }
+  ]
+}
