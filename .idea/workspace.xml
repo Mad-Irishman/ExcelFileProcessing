@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c9accce-4d08-4a9b-b2fa-717008febebf" name="Changes" comment="" />
+    <list default="true" id="2c9accce-4d08-4a9b-b2fa-717008febebf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelFileProcessorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ThreadStatusService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf_excel_serv.json" beforeDir="false" afterPath="$PROJECT_DIR$/conf_excel_serv.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppFactoryParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppFactoryExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/controller/ExcelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/controller/ExcelUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelFileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelValidationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/TaskStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/upload-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/upload-form.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,6 +65,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -106,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742948983157</updated>
-      <workItem from="1742948984875" duration="10945000" />
+      <workItem from="1742948984875" duration="21045000" />
     </task>
     <servers />
   </component>

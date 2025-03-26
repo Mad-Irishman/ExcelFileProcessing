@@ -12,18 +12,19 @@ import com.ss.config.js.ConfJsDb;
 import com.ss.config.js.ExceptConf;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class ConfJsAppParser extends ConfJsApp {
+public class ConfJsAppExcel extends ConfJsApp {
 
     private String nameServer;
     private String serverType;
     private int executorPoolSize;
     private String downloadPathUpload;
     private String downloadPathProcessing;
+    private String dataFormat;
 
     public static final String SERVER_TYPE_DEV = "dev";
     public static final String SERVER_TYPE_TEST = "test";
 
-    public ConfJsAppParser() {
+    public ConfJsAppExcel() {
         super(ConfJsDb.knownDb);
     }
 
@@ -35,6 +36,7 @@ public class ConfJsAppParser extends ConfJsApp {
             executorPoolSize = getIntRequired(p_xParser, "executor_pool_size");
             downloadPathUpload = getStringRequired(p_xParser, "download_path_upload");
             downloadPathProcessing = getStringRequired(p_xParser, "download_path_processing");
+            dataFormat = getStringRequired(p_xParser, "date_format");
         } catch (RuntimeException ex) {
             throw new ExceptConf("ErrConfA1", "Can't process project configuration",
                     ex.getMessage(), ex);
@@ -59,6 +61,10 @@ public class ConfJsAppParser extends ConfJsApp {
 
     public String getServerType() {
         return serverType;
+    }
+
+    public String getDataFormat() {
+        return dataFormat;
     }
 
     @Override

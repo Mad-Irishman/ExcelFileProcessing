@@ -14,14 +14,14 @@ import java.io.FileNotFoundException;
 /**
  * @author vlitenko
  */
-public class ConfJsParser extends ConfJs {
+public class ConfJsExcel extends ConfJs {
 
     public static final String APP_NAME = "excel-service";
-    public static final ConfJsParser instance = new ConfJsParser();
+    public static final ConfJsExcel instance = new ConfJsExcel();
     public static final String CONF_FILE_NAME = "conf_excel_serv.json";
 
-    private ConfJsParser() {
-        super(APP_NAME, ConfJsAppFactoryParser.getInstance());
+    private ConfJsExcel() {
+        super(APP_NAME, ConfJsAppFactoryExcel.getInstance());
         try {
             load(CONF_FILE_NAME, "../" + CONF_FILE_NAME);
         } catch (FileNotFoundException ex) {
@@ -41,13 +41,13 @@ public class ConfJsParser extends ConfJs {
         }
     }
 
-    public static ConfJsParser getInstance() {
+    public static ConfJsExcel getInstance() {
         return instance;
     }
 
-    public ConfJsAppParser getApp() {
+    public ConfJsAppExcel getApp() {
         try {
-            return (ConfJsAppParser) super.getApp(APP_NAME);
+            return (ConfJsAppExcel) super.getApp(APP_NAME);
         } catch (ExceptCJsNoObject ex) {
             throw new ExceptConf("ErrConf3", "Can't process project configuration",
                     String.format("Cant't get app %s in file %s", APP_NAME, CONF_FILE_NAME), ex);

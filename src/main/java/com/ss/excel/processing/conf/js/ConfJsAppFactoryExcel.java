@@ -13,18 +13,17 @@ import java.util.HashMap;
  *
  * @author vlitenko
  */
-import java.util.HashMap;
 
-public class ConfJsAppFactoryParser extends ConfJsAppFactory {
+public class ConfJsAppFactoryExcel extends ConfJsAppFactory {
 
-    private static final ConfJsAppFactoryParser instance = new ConfJsAppFactoryParser();
+    private static final ConfJsAppFactoryExcel instance = new ConfJsAppFactoryExcel();
 
-    public static ConfJsAppFactoryParser getInstance() {
+    public static ConfJsAppFactoryExcel getInstance() {
         return instance;
     }
 
     @Override
     public ConfJsApp newObj(HashMap<String, ConfJsDbFactory_I> factoriesDb) {
-        return new ConfJsAppParser();
+        return new ConfJsAppExcel();
     }
 }

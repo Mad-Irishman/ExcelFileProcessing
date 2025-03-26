@@ -8,6 +8,7 @@
       "server_type": "dev",
       "download_path_upload": "uploads\\",
       "download_path_processing": "processing\\",
+      "date_format": "dd.MM.yyyy",
       "executor_pool_size": 10
     }
   ]

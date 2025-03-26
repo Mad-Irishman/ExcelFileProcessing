@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Status</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Статус обработки</h1>
+<p>Thread ID: <span th:text="${threadId}"></span></p>
+<p>Статус: <span th:text="${status}"></span></p>
+<div th:if="${status} == 'COMPLETED'">
+    <a th:href="@{/download(fileId=${threadId})}">Скачать результат</a>
+</div>
+<div th:if="${status} == 'FAILED'">
+    <a th:href="@{/upload}">Ошибка. Попробуйте еще раз</a>
+</div>
+</body>
+</html>
