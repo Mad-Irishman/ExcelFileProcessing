@@ -4,6 +4,8 @@ import com.ss.Except4Support;
 import com.ss.excel.processing.conf.js.ConfJsExcel;
 import com.ss.excel.processing.service.ExcelFileProcessorService;
 import com.ss.excel.processing.service.ThreadStatusService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.concurrent.Future;
 
 @Service
 public class FileProcessingTaskService {
+    private static final Logger logger = LoggerFactory.getLogger(FileProcessingTaskService.class);
+
     private static final ExecutorService processingExecutor = Executors.newFixedThreadPool(
             ConfJsExcel.getInstance().getApp().getExecutorPoolSize()
     );
@@ -50,13 +54,14 @@ public class FileProcessingTaskService {
     private void awaitTaskCompletion(Future<String> future, String taskId) {
         try {
             future.get();
-        } catch (Exception ex) {
+        } catch (Exception e) {
             statusService.setTackStatus(taskId, ThreadStatusService.TaskStatus.ERROR);
+            logger.error("Error during task execution (Task ID: {}). Error: {}", taskId, e.getMessage(), e);
             throw new Except4Support(
                     "FileProcessingError",
                     "Failed to process uploaded file",
                     "Error processing file with task ID: " + taskId,
-                    ex
+                    e
             );
         }
     }

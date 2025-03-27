@@ -3,6 +3,8 @@ package com.ss.excel.processing.service;
 import com.ss.Except4Support;
 import com.ss.excel.processing.service.uploadService.FileStorageService;
 import com.ss.excel.processing.service.uploadService.FileProcessingTaskService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.nio.file.Path;
 
 @Service
 public class ExcelUploadProcessor {
+    private static final Logger logger = LoggerFactory.getLogger(ExcelUploadProcessor.class);
+
     private static final String UPLOAD_ERROR_CODE = "ExcelUploadError";
     private static final String UPLOAD_ERROR_MESSAGE = "Failed to process uploaded Excel file";
 
@@ -32,12 +36,13 @@ public class ExcelUploadProcessor {
             Path tempFilePath = prepareTempFileForProcessing();
             storeUploadedFile(fileStream, tempFilePath);
             return startFileProcessing(tempFilePath);
-        } catch (IOException ex) {
+        } catch (IOException e) {
+            logger.error("Error during Excel upload processing. Error: {}", e.getMessage(), e);
             throw new Except4Support(
                     UPLOAD_ERROR_CODE,
                     UPLOAD_ERROR_MESSAGE,
                     "I/O error during file upload processing",
-                    ex
+                    e
             );
         }
     }
@@ -49,8 +54,9 @@ public class ExcelUploadProcessor {
     private void storeUploadedFile(InputStream fileStream, Path tempFilePath) throws IOException {
         try {
             fileStorageService.storeExcelFile(fileStream, tempFilePath);
-        } catch (Except4Support ex) {
-            throw new IOException("Failed to store uploaded file", ex);
+        } catch (Except4Support e) {
+            logger.error("Failed to store uploaded file to: {}. Error: {}", tempFilePath, e.getMessage(), e);
+            throw new IOException("Failed to store uploaded file", e);
         }
     }
 

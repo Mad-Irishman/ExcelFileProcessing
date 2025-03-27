@@ -4,6 +4,8 @@ import com.ss.Except4Support;
 import com.ss.excel.processing.conf.js.ConfJsExcel;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
@@ -14,6 +16,8 @@ import java.nio.file.Path;
 
 @Service
 public class FileStorageService {
+    private static final Logger logger = LoggerFactory.getLogger(FileStorageService.class);
+
     private static final String TEMP_FILE_PREFIX = "temp-";
     private static final String TEMP_FILE_EXTENSION = ".xlsx";
 
@@ -30,12 +34,13 @@ public class FileStorageService {
             );
             tempFilePath.toFile().deleteOnExit();
             return tempFilePath;
-        } catch (IOException ex) {
+        } catch (IOException e) {
+            logger.error("Could not create temp file in directory: {}", uploadDirectory, e);
             throw new Except4Support(
                     "FileCreationError",
                     "Failed to create temporary file",
                     "Could not create temp file in directory: " + uploadDirectory,
-                    ex
+                    e
             );
         }
     }
@@ -44,12 +49,13 @@ public class FileStorageService {
         if (!Files.exists(Path.of(uploadDirectory))) {
             try {
                 Files.createDirectories(Path.of(uploadDirectory));
-            } catch (IOException ex) {
+            } catch (IOException e) {
+                logger.error("Could not create temporary directory: {}", uploadDirectory, e);
                 throw new Except4Support(
                         "DirectoryCreationError",
                         "Failed to create upload directory",
                         "Could not create directory: " + uploadDirectory,
-                        ex
+                        e
                 );
             }
         }
@@ -62,12 +68,13 @@ public class FileStorageService {
             copySheetContent(sourceWorkbook.getSheetAt(0), newWorkbook.createSheet());
             saveWorkbookToFile(newWorkbook, destinationPath);
 
-        } catch (IOException ex) {
+        } catch (IOException e) {
+            logger.error("Error while storing file to: {}", destinationPath, e);
             throw new Except4Support(
                     "FileStorageError",
                     "Failed to store Excel file",
                     "Error while storing file to: " + destinationPath,
-                    ex
+                    e
             );
         }
     }
@@ -98,7 +105,8 @@ public class FileStorageService {
             case BOOLEAN -> targetCell.setCellValue(sourceCell.getBooleanCellValue());
             case FORMULA -> targetCell.setCellFormula(sourceCell.getCellFormula());
             case BLANK -> targetCell.setBlank();
-            default -> {}
+            default -> {
+            }
         }
     }
 

@@ -6,6 +6,8 @@ import com.ss.excel.processing.conf.js.ConfJsExcel;
 import com.ss.excel.processing.service.uploadService.FileProcessingTaskService;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ import java.time.ZoneId;
 
 @Service
 public class ExcelFileProcessorService {
+    private static final Logger logger = LoggerFactory.getLogger(ExcelFileProcessorService.class);
+
     private static final String PROCESSED_FILE_PREFIX = "processed-";
     private static final String PROCESSED_FILE_EXTENSION = ".xlsx";
     private static final String STATUS_SUCCESS = "OK";
@@ -60,9 +64,11 @@ public class ExcelFileProcessorService {
             autoSizeColumns(outputSheet);
 
             return saveProcessedFile(outputWorkbook, processId);
-        } catch (IOException ex) {
+        } catch (IOException e) {
+            logger.error("Error processing Excel file: {} (Process ID: {}). Error: {}",
+                    inputFileName, processId, e.getMessage(), e);
             throw new Except4Support("ExcelProcessingError", "Error during Excel processing",
-                    "Failed to process Excel file: " + inputFileName, ex);
+                    "Failed to process Excel file: " + inputFileName, e);
         }
     }
 
@@ -71,15 +77,18 @@ public class ExcelFileProcessorService {
 
         try (FileInputStream fileStream = new FileInputStream(inputFile)) {
             return new XSSFWorkbook(fileStream);
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException e) {
+            logger.error("Couldn't find file: {}", inputFile.getAbsolutePath(), e);
             throw new Except4Support("FileNotFound", "Input file not found",
-                    "Could not find file: " + inputFile.getAbsolutePath(), ex);
-        } catch (InvalidFormatException ex) {
+                    "Could not find file: " + inputFile.getAbsolutePath(), e);
+        } catch (InvalidFormatException e) {
+            logger.error("The file isn't a valid Excel file: {}", inputFile.getAbsolutePath(), e);
             throw new Except4Support("InvalidFormat", "Invalid Excel format",
-                    "The file is not a valid Excel file: " + inputFile.getAbsolutePath(), ex);
-        } catch (IOException ex) {
+                    "The file is not a valid Excel file: " + inputFile.getAbsolutePath(), e);
+        } catch (IOException e) {
+            logger.error("Failed to read file: {}", inputFile.getAbsolutePath(), e);
             throw new Except4Support("IOError", "Error reading Excel file",
-                    "Failed to read Excel file: " + inputFile.getAbsolutePath(), ex);
+                    "Failed to read Excel file: " + inputFile.getAbsolutePath(), e);
         }
     }
 

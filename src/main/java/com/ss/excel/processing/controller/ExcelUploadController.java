@@ -29,16 +29,14 @@ public class ExcelUploadController {
     @PostMapping("/upload")
     public String uploadExcelFile(@RequestParam("file") MultipartFile file) {
 
-        InputStream inputStream = null;
-        try {
-            inputStream = file.getInputStream();
+        try (InputStream inputStream = file.getInputStream()) {
+            String threadId = excelUploadService.processUpload(inputStream);
+            return "redirect:/status/{threadId}";
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            logger.error("Error processing uploaded file: {}. Error: {}",
+                    file.getOriginalFilename(), e.getMessage(), e);
+            return "redirect:/upload";
         }
-
-        String threadId = excelUploadService.processUpload(inputStream);
-
-        return "redirect:/status/{threadId}";
     }
 
 }
