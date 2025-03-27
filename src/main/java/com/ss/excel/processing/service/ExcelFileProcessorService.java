@@ -20,7 +20,6 @@ import java.time.ZoneId;
 
 @Service
 public class ExcelFileProcessorService {
-    private static final Logger logger = LoggerFactory.getLogger(ExcelFileProcessorService.class);
 
     private static final String PROCESSED_FILE_PREFIX = "processed-";
     private static final String PROCESSED_FILE_EXTENSION = ".xlsx";
@@ -65,8 +64,6 @@ public class ExcelFileProcessorService {
 
             return saveProcessedFile(outputWorkbook, processId);
         } catch (IOException e) {
-            logger.error("Error processing Excel file: {} (Process ID: {}). Error: {}",
-                    inputFileName, processId, e.getMessage(), e);
             throw new Except4Support("ExcelProcessingError", "Error during Excel processing",
                     "Failed to process Excel file: " + inputFileName, e);
         }
@@ -78,15 +75,12 @@ public class ExcelFileProcessorService {
         try (FileInputStream fileStream = new FileInputStream(inputFile)) {
             return new XSSFWorkbook(fileStream);
         } catch (FileNotFoundException e) {
-            logger.error("Couldn't find file: {}", inputFile.getAbsolutePath(), e);
             throw new Except4Support("FileNotFound", "Input file not found",
                     "Could not find file: " + inputFile.getAbsolutePath(), e);
         } catch (InvalidFormatException e) {
-            logger.error("The file isn't a valid Excel file: {}", inputFile.getAbsolutePath(), e);
             throw new Except4Support("InvalidFormat", "Invalid Excel format",
                     "The file is not a valid Excel file: " + inputFile.getAbsolutePath(), e);
         } catch (IOException e) {
-            logger.error("Failed to read file: {}", inputFile.getAbsolutePath(), e);
             throw new Except4Support("IOError", "Error reading Excel file",
                     "Failed to read Excel file: " + inputFile.getAbsolutePath(), e);
         }

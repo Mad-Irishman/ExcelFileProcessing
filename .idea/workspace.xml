@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c9accce-4d08-4a9b-b2fa-717008febebf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelFileProcessorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ThreadStatusService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf_excel_serv.json" beforeDir="false" afterPath="$PROJECT_DIR$/conf_excel_serv.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppFactoryParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppFactoryExcel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsAppExcel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/conf/js/ConfJsExcel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/controller/ExcelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/controller/ExcelUploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelFileService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelValidationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/TaskStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/upload-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/upload-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelFileProcessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelFileProcessorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelUploadProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/ExcelUploadProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/uploadService/FileProcessingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/uploadService/FileProcessingTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/uploadService/FileProcessingTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/uploadService/FileProcessingTaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/uploadService/FileStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ss/excel/processing/service/uploadService/FileStorageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Mad-Irishman"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mad-Irishman&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Mad-Irishman/ExcelFileProcessing.git",
-    "accountId": "0c16845f-bec3-4c7a-ad06-8fce12774fe6"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Mad-Irishman/ExcelFileProcessing.git&quot;,
+    &quot;accountId&quot;: &quot;0c16845f-bec3-4c7a-ad06-8fce12774fe6&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -54,10 +47,10 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2upcVm4RHRYcr6CZPvdJpakuOZr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -74,6 +67,7 @@
     "Spring Boot.ExcelProcessing.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/_madgic_/Desktop/converterPDF",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -122,6 +116,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742948983157</updated>
       <workItem from="1742948984875" duration="21045000" />
+      <workItem from="1743059077304" duration="2027000" />
     </task>
     <servers />
   </component>

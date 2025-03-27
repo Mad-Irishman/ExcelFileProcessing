@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.Callable;
 
 public class FileProcessingTask implements Callable<String> {
-    private static final Logger logger = LoggerFactory.getLogger(FileProcessingTask.class);
 
     private final String fileName;
     private final String taskId;
@@ -36,8 +35,6 @@ public class FileProcessingTask implements Callable<String> {
             return processedFileName;
         } catch (Except4Support e) {
             statusService.setTackStatus(taskId, ThreadStatusService.TaskStatus.ERROR);
-            logger.error("Error processing file: {} (Task ID: {}). Error: {}",
-                    fileName, taskId, e.getMessage(), e);
             throw e;
         }
     }

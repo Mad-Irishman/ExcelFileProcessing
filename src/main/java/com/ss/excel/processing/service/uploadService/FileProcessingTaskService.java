@@ -16,7 +16,6 @@ import java.util.concurrent.Future;
 
 @Service
 public class FileProcessingTaskService {
-    private static final Logger logger = LoggerFactory.getLogger(FileProcessingTaskService.class);
 
     private static final ExecutorService processingExecutor = Executors.newFixedThreadPool(
             ConfJsExcel.getInstance().getApp().getExecutorPoolSize()
@@ -56,7 +55,6 @@ public class FileProcessingTaskService {
             future.get();
         } catch (Exception e) {
             statusService.setTackStatus(taskId, ThreadStatusService.TaskStatus.ERROR);
-            logger.error("Error during task execution (Task ID: {}). Error: {}", taskId, e.getMessage(), e);
             throw new Except4Support(
                     "FileProcessingError",
                     "Failed to process uploaded file",

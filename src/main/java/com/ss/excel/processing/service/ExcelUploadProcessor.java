@@ -14,7 +14,6 @@ import java.nio.file.Path;
 
 @Service
 public class ExcelUploadProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(ExcelUploadProcessor.class);
 
     private static final String UPLOAD_ERROR_CODE = "ExcelUploadError";
     private static final String UPLOAD_ERROR_MESSAGE = "Failed to process uploaded Excel file";
@@ -37,7 +36,6 @@ public class ExcelUploadProcessor {
             storeUploadedFile(fileStream, tempFilePath);
             return startFileProcessing(tempFilePath);
         } catch (IOException e) {
-            logger.error("Error during Excel upload processing. Error: {}", e.getMessage(), e);
             throw new Except4Support(
                     UPLOAD_ERROR_CODE,
                     UPLOAD_ERROR_MESSAGE,
@@ -55,7 +53,6 @@ public class ExcelUploadProcessor {
         try {
             fileStorageService.storeExcelFile(fileStream, tempFilePath);
         } catch (Except4Support e) {
-            logger.error("Failed to store uploaded file to: {}. Error: {}", tempFilePath, e.getMessage(), e);
             throw new IOException("Failed to store uploaded file", e);
         }
     }

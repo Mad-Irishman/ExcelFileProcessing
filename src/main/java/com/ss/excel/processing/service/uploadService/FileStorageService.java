@@ -16,8 +16,6 @@ import java.nio.file.Path;
 
 @Service
 public class FileStorageService {
-    private static final Logger logger = LoggerFactory.getLogger(FileStorageService.class);
-
     private static final String TEMP_FILE_PREFIX = "temp-";
     private static final String TEMP_FILE_EXTENSION = ".xlsx";
 
@@ -35,7 +33,6 @@ public class FileStorageService {
             tempFilePath.toFile().deleteOnExit();
             return tempFilePath;
         } catch (IOException e) {
-            logger.error("Could not create temp file in directory: {}", uploadDirectory, e);
             throw new Except4Support(
                     "FileCreationError",
                     "Failed to create temporary file",
@@ -50,7 +47,6 @@ public class FileStorageService {
             try {
                 Files.createDirectories(Path.of(uploadDirectory));
             } catch (IOException e) {
-                logger.error("Could not create temporary directory: {}", uploadDirectory, e);
                 throw new Except4Support(
                         "DirectoryCreationError",
                         "Failed to create upload directory",
@@ -69,7 +65,6 @@ public class FileStorageService {
             saveWorkbookToFile(newWorkbook, destinationPath);
 
         } catch (IOException e) {
-            logger.error("Error while storing file to: {}", destinationPath, e);
             throw new Except4Support(
                     "FileStorageError",
                     "Failed to store Excel file",

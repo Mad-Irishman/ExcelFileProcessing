@@ -31,7 +31,7 @@ public class ExcelUploadController {
 
         try (InputStream inputStream = file.getInputStream()) {
             String threadId = excelUploadService.processUpload(inputStream);
-            return "redirect:/status/{threadId}";
+            return "redirect:/status/" + threadId;
         } catch (IOException e) {
             logger.error("Error processing uploaded file: {}. Error: {}",
                     file.getOriginalFilename(), e.getMessage(), e);
